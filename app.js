@@ -7,3 +7,11 @@ document.querySelector("#allowGeo").addEventListener("click", () => {
         iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&marker=${latitude},${longitude}`;
     });
 });
+
+document.querySelector("#notify").addEventListener("click", () => {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            new Notification("Hello, World!");
+        }
+    });
+})
