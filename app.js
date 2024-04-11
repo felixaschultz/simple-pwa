@@ -12,7 +12,18 @@ document.querySelector("#notify").addEventListener("click", () => {
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
             navigator.serviceWorker.ready.then(registration => {
-                registration.showNotification("Hello, World!");
+                const notification = {
+                    title: "Hello, World!",
+                    body: "This is a notification from the app!",
+                    icon: "icon.png"
+                };
+                const message = document.querySelector("#notification").value;
+                if(message == ""){
+                    registration.showNotification(notification.title, notification);
+                }else{
+                    registration.showNotification(message);
+
+                }
             });
         }
     });
