@@ -11,11 +11,9 @@ document.querySelector("#allowGeo").addEventListener("click", () => {
 document.querySelector("#notify").addEventListener("click", () => {
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
-            new Notification("Hello, World!");
+            navigator.serviceWorker.ready.then(registration => {
+                registration.showNotification("Hello, World!");
+            });
         }
-    });
-
-    navigator.serviceWorker.ready.then(registration => {
-        registration.showNotification("Hello, World!");
     });
 })
