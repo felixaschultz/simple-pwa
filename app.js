@@ -14,4 +14,8 @@ document.querySelector("#notify").addEventListener("click", () => {
             new Notification("Hello, World!");
         }
     });
+
+    navigator.serviceWorker.ready.then(registration => {
+        registration.showNotification("Hello, World!");
+    });
 })
