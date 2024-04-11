@@ -5,4 +5,4 @@ document.querySelector("#allowGeo").addEventListener("click", () => {
         console.log("Longitude:", position.coords.longitude);
         iframe.src = `https://www.openstreetmap.org/#map=18/${position.coords.latitude}/${position.coords.longitude}`;
     });
-});$
+});
