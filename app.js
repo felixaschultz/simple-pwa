@@ -15,7 +15,9 @@ document.querySelector("#notify").addEventListener("click", () => {
                 const notification = {
                     title: "Hello, World!",
                     body: "This is a notification from the app!",
-                    icon: "icon.png"
+                    vibrate: [200, 100, 200, 100, 200, 100, 200],
+                    tag: "notification-tag",
+                    link: "https://www.google.com",
                 };
                 const message = document.querySelector("#notification").value;
                 if(message == ""){
