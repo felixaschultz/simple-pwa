@@ -29,6 +29,7 @@ document.querySelector("#notify").addEventListener("click", () => {
                 }else{
                     registration.showNotification(message).then((e) => {
                         console.log("Notification sent!", e);
+                        
                         /* e.onclick = function() {
                             window.open("https://www.google.com", "_blank");
                         }; */
