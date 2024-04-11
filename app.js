@@ -12,21 +12,27 @@ document.querySelector("#notify").addEventListener("click", () => {
     Notification.requestPermission().then(permission => {
         if (permission === "granted") {
             navigator.serviceWorker.ready.then(registration => {
-                const notification = {
+                const notificationContent = {
                     title: "Hello, World!",
                     body: "This is a notification from the app!",
                     vibrate: [200, 100, 200, 100, 200, 100, 200],
                     tag: "notification-tag",
                 };
-                notification.addEventListener("click", () => {
-                    window.open("https://www.google.com");
-                });
                 const message = document.querySelector("#notification").value;
                 if(message == ""){
-                    registration.showNotification(notification.title, notification);
+                    registration.showNotification(notificationContent.title, notificationContent).then((e) => {
+                        console.log("Notification sent!", e);
+                        /* e.onclick = function() {
+                            window.open("https://www.google.com", "_blank");
+                        }; */
+                    });
                 }else{
-                    registration.showNotification(message);
-
+                    registration.showNotification(message).then((e) => {
+                        console.log("Notification sent!", e);
+                        /* e.onclick = function() {
+                            window.open("https://www.google.com", "_blank");
+                        }; */
+                    });
                 }
             });
         }
