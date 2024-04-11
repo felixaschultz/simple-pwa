@@ -17,8 +17,10 @@ document.querySelector("#notify").addEventListener("click", () => {
                     body: "This is a notification from the app!",
                     vibrate: [200, 100, 200, 100, 200, 100, 200],
                     tag: "notification-tag",
-                    link: "https://www.google.com",
                 };
+                notification.addEventListener("click", () => {
+                    window.open("https://www.google.com");
+                });
                 const message = document.querySelector("#notification").value;
                 if(message == ""){
                     registration.showNotification(notification.title, notification);
